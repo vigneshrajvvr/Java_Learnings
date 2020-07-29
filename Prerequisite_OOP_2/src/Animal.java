@@ -4,6 +4,10 @@ public class Animal {
 	String gender;
 	int weightInLbs;
 	
+//	public Animal() {
+//		
+//	}
+//	
 	public Animal(int age, String gender, int weightInLbs) {
 		super();
 		this.age = age;
