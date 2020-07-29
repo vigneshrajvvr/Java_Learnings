@@ -7,7 +7,7 @@ public class Zoo {
 		
 		Bird bird1 = new Bird(3,"F",10);
 		bird1.eat();
-		bird1.sleep();
+		bird1.sleep(); 
 		
 	}
 
