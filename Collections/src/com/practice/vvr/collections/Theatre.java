@@ -1,12 +1,18 @@
 package com.practice.vvr.collections;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Theatre {
 
 	private final String theatreName;
+	//Even replacing ArrayList with LinkedList, this implementation will work
 	private List<Seat> seats = new ArrayList<>();
+//	private List<Seat> seats = new LinkedList<>();
+//	private Collection<Seat> seats = new LinkedList<>();
+//	private Collection<Seat> seats = new HashSet<>();
+//	private Collection<Seat> seats = new LinkedHashSet<>();
 
 	public Theatre(String theatreName, int numRows, int seatsPerRow) {
 		super();
@@ -26,19 +32,27 @@ public class Theatre {
 	}
 
 	public boolean reserveSeat(String seatNumber) {
-		Seat requestedSeat = null;
-		for (Seat seat : seats) {
-			if (seat.getSeatNumber().equals(seatNumber)) {
-				requestedSeat = seat;
-				break;
-			}
-		}
-
-		if (requestedSeat == null) {
+		Seat requestedSeat = new Seat(seatNumber);
+		int foundSeat = Collections.binarySearch(seats, requestedSeat, null);
+		if(foundSeat >= 0) {
+			return requestedSeat.reserve();	
+		} else {
 			System.out.println("There is no seat " + seatNumber);
 			return false;
 		}
-		return requestedSeat.reserve();
+//		for (Seat seat : seats) {
+//			System.out.print(".");
+//			if (seat.getSeatNumber().equals(seatNumber)) {
+//				requestedSeat = seat;
+//				break;
+//			}
+//		}
+//
+//		if (requestedSeat == null) {
+//			System.out.println("There is no seat " + seatNumber);
+//			return false;
+//		}
+//		return requestedSeat.reserve();
 	}
 
 	// for testing
@@ -48,7 +62,7 @@ public class Theatre {
 		}
 	}
 
-	private class Seat {
+	private class Seat implements Comparable<Seat>{
 		private final String seatNumber;
 		private boolean reserved = false;
 
@@ -77,6 +91,11 @@ public class Theatre {
 
 		public String getSeatNumber() {
 			return seatNumber;
+		}
+
+		@Override
+		public int compareTo(Seat seat) {
+			return this.seatNumber.compareToIgnoreCase(seat.getSeatNumber());
 		}
 		
 
