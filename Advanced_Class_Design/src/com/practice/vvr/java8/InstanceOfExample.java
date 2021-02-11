@@ -6,6 +6,10 @@ class Hippo extends HeavyAnimal {}
 
 class Elephant extends HeavyAnimal {}
 
+class MotherHippo extends Hippo implements Mother {}
+
+interface Mother {}
+
 public class InstanceOfExample {
 	
 	public static void main(String args[]) {
@@ -34,6 +38,11 @@ public class InstanceOfExample {
 		 * When checking whether an object is an instanceof an interface, 
 		 * Java waits until runtime to do the check.
 		 */
+		
+		Mother mom = new MotherHippo();
+		System.out.println(mom instanceof Mother); // true
+		System.out.println(mom instanceof MotherHippo); // true
+		System.out.println(mom instanceof Hippo); // true
 		
 	}
 
