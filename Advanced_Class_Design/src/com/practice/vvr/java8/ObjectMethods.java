@@ -13,6 +13,11 @@ public class ObjectMethods {
 		StringBuilder sb1 = new StringBuilder("lion");
 		StringBuilder sb2 = new StringBuilder("lion");
 		System.out.println(sb1.equals(sb2));                // false
+		
+		//hashcode
+		// if equals method return true for two objects then it hascode method also should 
+		// return same value.
+		System.out.println("s1 hashcode : " + s1.hashCode() + "s2 hashCode : " + s2.hashCode() + "" + (s1.hashCode() == s2.hashCode()));
 	}
 }
 
