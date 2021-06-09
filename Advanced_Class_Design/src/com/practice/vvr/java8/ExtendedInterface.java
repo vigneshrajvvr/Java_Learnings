@@ -13,6 +13,16 @@ public interface ExtendedInterface {
 	public default double getTemperature() {
 		return 10.0;
 	}
+	
+	
+	/*
+	 * Static interface methods are similar to static methods.
+	 * To access the static method in an interface then interface
+	 * name has to be used.s
+	 */
+	public static int staticInterfaceMethod() {
+		return 10;
+	}
 }
 
 /*
@@ -35,5 +45,11 @@ class Extended implements HashWiskers {
 	public int getNumberOfWishkers() {
 		return 0;
 	}
+	
+	public int testStaticMethod() {
+		return ExtendedInterface.staticInterfaceMethod();
+		// Accessed using interface name
+	}
+	
 
 }
