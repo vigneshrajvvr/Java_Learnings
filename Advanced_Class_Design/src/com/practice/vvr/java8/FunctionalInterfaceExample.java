@@ -18,3 +18,12 @@ public interface FunctionalInterfaceExample {
 	public abstract void sprint();
 	
 }
+
+class Example1 implements FunctionalInterfaceExample {
+
+	@Override
+	public void sprint() {
+		System.out.println("Implementing functional interface method");
+	}
+	
+}
