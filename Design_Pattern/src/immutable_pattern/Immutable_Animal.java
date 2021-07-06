@@ -1,5 +1,6 @@
 package immutable_pattern;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -27,7 +28,14 @@ public final class Immutable_Animal {
 		super();
 		this.species = species;
 		this.age = age;
-		this.favouriteFoods = favouriteFoods;
+		if(favouriteFoods == null) {
+			throw new RuntimeException("favoriteFoods is required");     
+		}
+		/*
+		 * new ArrayList<>(favouriteFoods) is used to make sure both
+		 * references does not point to same object.
+		 */
+		this.favouriteFoods = new ArrayList<>(favouriteFoods);
 	}
 
 	public String getSpecies() {
