@@ -1,6 +1,7 @@
 package com.practice.vvr.generics;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ArrayAndArrayList {
@@ -21,6 +22,32 @@ public class ArrayAndArrayList {
 		}
 		
 		// Conversion between arrays and array list
+		System.out.println("Conversion : ");
+		String[] array = {"gerbil", "mouse"};
+		List<String> listArray = Arrays.asList(array); // returns fixed size list
+		listArray.set(1, "test"); // Modification in the list is being reflected in array from where it has been converted
+		
+		System.out.println(listArray.toString());
+		for(int i = 0; i < array.length; i++) {
+			System.out.println(array[i]);
+		}
+		
+		array[0] = "new";
+		System.out.println("Changes : ");
+		System.out.println(listArray.toString());
+		for(int i = 0; i < array.length; i++) {
+			System.out.println(array[i]);
+		}
+		
+		//listArray.remove(1); Exception throws as it's fixed list
+		String[] newArray = (String[]) listArray.toArray();
+		
+		//Searching and Sorting
+		System.out.println("Searching and Sorting");
+		int[] numbers = {6,9,1,8};
+		Arrays.sort(numbers);
+		System.out.println(Arrays.binarySearch(numbers, 6));
+		System.out.println(Arrays.binarySearch(numbers, 1));
 		
 	}
 	
