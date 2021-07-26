@@ -2,6 +2,7 @@ package com.practice.vvr.generics;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class ArrayAndArrayList {
@@ -43,12 +44,16 @@ public class ArrayAndArrayList {
 		String[] newArray = (String[]) listArray.toArray();
 		
 		//Searching and Sorting
-		System.out.println("Searching and Sorting");
+		System.out.println("Searching and Sorting :");
 		int[] numbers = {6,9,1,8};
 		Arrays.sort(numbers);
-		System.out.println(Arrays.binarySearch(numbers, 6));
-		System.out.println(Arrays.binarySearch(numbers, 1));
+		System.out.println(Arrays.binarySearch(numbers, 6)); // 1
+		System.out.println(Arrays.binarySearch(numbers, 3)); // -2
 		
+		List<Integer> sortedList = Arrays.asList(9, 7, 5, 3); 
+		Collections.sort(sortedList);
+		System.out.println(Collections.binarySearch(sortedList, 3)); // 0
+		System.out.println(Collections.binarySearch(sortedList, 1)); // -1
 	}
 	
 }
