@@ -54,6 +54,16 @@ public class ArrayAndArrayList {
 		Collections.sort(sortedList);
 		System.out.println(Collections.binarySearch(sortedList, 3)); // 0
 		System.out.println(Collections.binarySearch(sortedList, 1)); // -1
+		
+		// Autoboxing and unboxing
+		List<Integer> autoBoxing = new ArrayList<>();
+		autoBoxing.add(1);
+		autoBoxing.add(new Integer(3));
+		autoBoxing.add(new Integer(5));
+		
+		autoBoxing.remove(1); // specifying the number indicates the index
+		autoBoxing.remove(new Integer(5)); // This will remove the matching object
+		System.out.println(autoBoxing.toString()); // [1]
 	}
 	
 }
