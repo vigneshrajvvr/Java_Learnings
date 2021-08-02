@@ -1,4 +1,4 @@
-package com.practice.vvr.generics;
+package com.practice.vvr.collections;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -64,6 +64,10 @@ public class ArrayAndArrayList {
 		autoBoxing.remove(1); // specifying the number indicates the index
 		autoBoxing.remove(new Integer(5)); // This will remove the matching object
 		System.out.println(autoBoxing.toString()); // [1]
+		
+		int num = autoBoxing.get(0); // Unboxing
+		
+		
 	}
 	
 }
