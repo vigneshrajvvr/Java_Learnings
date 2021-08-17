@@ -15,7 +15,7 @@ package com.practice.vvr.generics;
  * 
  * 
  */
-public class Intro<T> {
+public class Intro<T> implements GenericInterface<T>{
 	
 	private T contents;
 	
@@ -37,6 +37,15 @@ public class Intro<T> {
 		for(String temp : result) {
 			System.out.println(temp);
 		}
+		
+		Intro<String> test = new Intro<>();
+		test.test(null);
+		
+	}
+
+	@Override
+	public boolean test(T t) {
+		return t == null;
 	}
 }
 
