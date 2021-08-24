@@ -41,6 +41,28 @@ public class Intro<T> implements GenericInterface<T>{
 		Intro<String> test = new Intro<>();
 		test.test(null);
 		
+		Intro.<String>ship("String");
+		
+	}
+	
+	/*
+	 * <T> should be used to specify the type of formal parameter when calling the method 
+	 */
+	public static <T> T ship(T t) {
+		System.out.println(t.getClass().getName());
+		return t;
+	}
+	
+	public static <T> void ship1(T t) {
+		System.out.println(t.getClass().getName());
+	}
+	
+	public void ship2(T t) {
+		
+	}
+	
+	public T ship3(T t) {
+		return t;
 	}
 
 	@Override
