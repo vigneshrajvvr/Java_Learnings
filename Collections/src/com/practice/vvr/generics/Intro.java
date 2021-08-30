@@ -68,6 +68,11 @@ public class Intro<T> implements GenericInterface<T>{
 		list2.add("three");
 		printList(list2);
 		
+		/*
+		 * Restricting unbounded wildcards - Upper bounded
+		 */
+		ArrayList<? extends Number> list3 = new ArrayList<Integer>();
+		
 	}
 	
 	/*
