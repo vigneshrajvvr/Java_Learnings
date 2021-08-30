@@ -1,5 +1,8 @@
 package com.practice.vvr.generics;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * Generic provides way to generalize the type of objects which we use in a class
  * formal type parameter - T has to be used
@@ -26,6 +29,16 @@ public class Intro<T> implements GenericInterface<T>{
 	public void add(T contents) {
 		this.contents = contents;
 	}
+	
+	/*
+	 * Unbounded wildcards - It accepts any type of object
+	 */
+	public static void printList(List<?> list) {
+		System.out.println("Input : " + list.get(0).getClass().getName());
+		for(Object o : list) {
+			System.out.println(o);
+		}
+	}
 
 	
 	public static void main(String args[]) {
@@ -42,6 +55,18 @@ public class Intro<T> implements GenericInterface<T>{
 		test.test(null);
 		
 		Intro.<String>ship("String");
+		
+		List<Integer> list1 = new ArrayList<>();
+		list1.add(5);
+		list1.add(6);
+		list1.add(7);
+		printList(list1);
+		
+		List<String> list2 = new ArrayList<>();
+		list2.add("Hello");
+		list2.add("two");
+		list2.add("three");
+		printList(list2);
 		
 	}
 	
