@@ -1,7 +1,7 @@
-package access_modifiers.cat.species;
+package advanced_class_design_01.access_modifiers.species;
 
 
-import access_modifiers.cat.BigCat;
+import advanced_class_design_01.access_modifiers.cat.BigCat;
 
 public class Lynx extends BigCat {
 

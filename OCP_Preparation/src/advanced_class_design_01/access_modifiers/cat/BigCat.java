@@ -1,4 +1,4 @@
-package access_modifiers.cat;
+package advanced_class_design_01.access_modifiers.cat;
 
 public class BigCat {
 

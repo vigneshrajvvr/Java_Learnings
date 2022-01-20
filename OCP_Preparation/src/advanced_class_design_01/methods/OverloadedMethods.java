@@ -1,8 +1,8 @@
-package methods;
+package advanced_class_design_01.methods;
 
 public class OverloadedMethods {
     public static void main(String args[]) {
-     //Overloaded methods
+        //Overloaded methods
         OverloadedMethods old = new OverloadedMethods();
         old.fly(1, 2);
     }

@@ -1,4 +1,6 @@
-package access_modifiers.cat;
+package advanced_class_design_01.access_modifiers.cat;
+
+import advanced_class_design_01.access_modifiers.cat.BigCat;
 
 public class CatAdmirer {
 
@@ -8,7 +10,7 @@ public class CatAdmirer {
         System.out.println(cat.name);
         System.out.println(cat.hasFur);
         System.out.println(cat.hasPaws);
-//System.out.println(cat.id);idcannotbeaccessedasit'sprivatefield
+//System.out.println(cat.id);id cannot be accessed as it's a private field
 
     }
 }
