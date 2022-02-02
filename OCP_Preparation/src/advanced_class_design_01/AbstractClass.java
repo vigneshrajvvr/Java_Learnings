@@ -1,4 +1,4 @@
-package advanced_class_design_01.classes;
+package advanced_class_design_01;
 
 public class AbstractClass {
 

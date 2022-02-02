@@ -1,4 +1,4 @@
-package advanced_class_design_01.methods;
+package advanced_class_design_01;
 
 public class OverloadedMethods {
     public static void main(String args[]) {
