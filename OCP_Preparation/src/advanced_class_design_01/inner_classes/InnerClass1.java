@@ -1,5 +1,8 @@
 package advanced_class_design_01.inner_classes;
 
+/*
+    member inner class
+ */
 public class InnerClass1 {
 
     private String greeting = "Hi";
