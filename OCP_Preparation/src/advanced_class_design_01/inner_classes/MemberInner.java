@@ -3,7 +3,7 @@ package advanced_class_design_01.inner_classes;
 /*
     member inner class
  */
-public class InnerClass1 {
+public class MemberInner {
 
     private String greeting = "Hi";
 
@@ -35,7 +35,7 @@ public class InnerClass1 {
 
     public static void main(String args[]) {
 
-        InnerClass1 outer = new InnerClass1();
+        MemberInner outer = new MemberInner();
 
         outer.callInner();
 
