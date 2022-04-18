@@ -4,11 +4,17 @@ public class Main {
 
     public static void main(String[] args) {
 
+        /*
+            4 bytes - 32 bits
+         */
         float myMinFloatValue = Float.MIN_VALUE;
         float myMaxFloatValue = Float.MAX_VALUE;
         System.out.println("Float minimum value : " + myMinFloatValue);
         System.out.println("Float maximum value : " + myMaxFloatValue);
 
+        /*
+            8 bytes - 64 bits
+         */
         double myMinDoubleValue = Double.MIN_VALUE;
         double myMaxDoubleValue = Double.MAX_VALUE;
         System.out.println("Double minimum value : " + myMinDoubleValue);
