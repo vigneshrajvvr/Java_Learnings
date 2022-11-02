@@ -1,0 +1,9 @@
+Single Responsibility principle: 
+	- Every software component should have one and only one responsibility/single reason to change
+	- Aim for High Cohesion & Loose Coupling
+	
+	
+Reasons to change in this example:
+	- Changes in Employee Attributes
+	- Changes in Database
+	- Changes in Tax Calculation
