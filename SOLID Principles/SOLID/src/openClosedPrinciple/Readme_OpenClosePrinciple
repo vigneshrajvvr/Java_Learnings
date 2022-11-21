@@ -1,0 +1,5 @@
+Open Close Principle (OCP)
+	- Open for Extension & Closed for Modification
+	
+In this example,
+	- Interface helped us to add HomeInsuranceCustomerProfile without making changes in the InsurancePremiumDiscounCalculator class
