@@ -27,7 +27,7 @@ public class ParallelStreams {
 		List.of(1,2,3,4,5)
 			.parallelStream()          // Order is not guaranteed but performance improved
 			.map(w -> doSomeWork(w))
-			.forEach(s -> System.out.print(s + " "));
+			.forEachOrdered(s -> System.out.print(s + " ")); // Updated with forEachOrdered to get ordered list
 		
 		System.out.println();
 		var timeTaken1 = (System.currentTimeMillis() - start1)/1000;
