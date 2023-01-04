@@ -1,6 +1,8 @@
 package java_apis;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ArrayListExamples {
 	
@@ -29,6 +31,25 @@ public class ArrayListExamples {
 		System.out.println(list1.isEmpty());
 		list1.add("hawk");
 		System.out.println(list1.equals(list2));
+		
+		list1.add("hawk");
+		list1.add("hawk");
+		list1.add("hawk");
+		
+		//List to array conversion
+		Object[] convertedStrings = list1.toArray();
+		String[] convertedStrings1 = list1.toArray(new String[0]);
+		
+		// Array to list conversion
+		Integer[] toBeConverted = new Integer[] { 3, 9, 10, 2, 5};
+		List<Integer> converted = Arrays.asList(toBeConverted);
+		// Fixed size and elements can be changed. Both references point to same object
+		
+		List<Integer> againConverted = List.of(toBeConverted);
+		// Fixed size and elements cannot be changed.
+		
+		// Ideal way
+		List<Integer> finalConversion = new ArrayList<>(againConverted);
 		
 	}
 
