@@ -2,6 +2,7 @@ package java_apis;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class ArrayListExamples {
@@ -50,6 +51,9 @@ public class ArrayListExamples {
 		
 		// Ideal way
 		List<Integer> finalConversion = new ArrayList<>(againConverted);
+		
+		Collections.sort(finalConversion);
+		System.out.println(finalConversion.toString());
 		
 	}
 
