@@ -31,6 +31,10 @@ public class StringFunctions {
 		System.out.println(s4.stripTrailing());
 		String result = "AnimaL    ".trim().toLowerCase().replace('a', 'A');
 		System.out.println(result);
+		
+		String name = "Hello World";
+		String name1 = new String(" Hello World").trim().intern();
+		System.out.println(name == name1);
 
 	}
 
