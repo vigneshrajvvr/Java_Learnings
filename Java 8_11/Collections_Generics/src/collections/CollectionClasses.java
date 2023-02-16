@@ -2,6 +2,7 @@ package collections;
 
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
@@ -26,6 +27,12 @@ public class CollectionClasses {
 		System.out.println(queue.poll());     // 10
 		System.out.println(queue.poll());     // 4
 		System.out.println(queue.peek());     // null
+		
+		Map<String, String> map = Map.of("Test1", "Value1", "Test2", "Value2");
+		map = Map.ofEntries(
+				Map.entry("Test1", "Value1"),
+				Map.entry("Test2", "Value2"));
+		Map<String, String> copiedMap = Map.copyOf(map);
 		
 	}
 
