@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
+import java.util.function.BiFunction;
 
 public class CollectionClasses {
 	
@@ -73,7 +74,55 @@ public class CollectionClasses {
 		newMap.entrySet().forEach(System.out::println);
 		newMap.entrySet().forEach(e -> System.out.println(e.getKey() + " " + e.getValue()));
 		newMap.keySet().forEach(System.out::println);
+		
+		System.out.println(newMap.getOrDefault(1, 's'));  // a
+		System.out.println(newMap.getOrDefault(0, 's'));  // s
+		System.out.println(newMap.replace(3, 'd'));       // c
+		System.out.println(newMap.replace(4, 'd'));       // null
+		newMap.forEach((k, v) -> System.out.println(v)); // a b d
+		
+		newMap.replaceAll((k, v) -> 'a');
+		newMap.forEach((k, v) -> System.out.println(v)); // a a a
+		
+		Map<String, String> favorites = new HashMap<>();
+		favorites.put("Jenny", "Tram");
+		favorites.putIfAbsent("Jenny", "Replaced");
+		favorites.forEach((k, v) -> System.out.println(v)); // Tram	
+
+		favorites.put("Tom", null);
+		favorites.putIfAbsent("test", "Replaced");
+		favorites.forEach((k, v) -> System.out.println(v)); // Replaced
+		
+		Map<String, String> merge = new HashMap<>();
+		merge.put("Jenny", "Bus Tour");
+		merge.put("Tom", "Tram");
+		
+		BiFunction<String, String, String> merger = (v1, v2) -> v1.length() > v2.length() ? v1 : v2;
+		merge.merge("Jenny", "New Bus Tour", merger); 
+		merge.forEach((k, v) -> System.out.println(k + " : " + v)); // ["Jenny" : "New Bus Tour", "Tom", "Tram"]
+		
+		merge.merge("Tennis", "New Bus Tour", merger); 
+		merge.forEach((k, v) -> System.out.println(k + " : " + v)); // ["Jenny" : "New Bus Tour", "Tom", "Tram", "Tennis" : "New Bus Tour"]
 	
+		
+		Map<String, String> mergeNew = new HashMap<>();
+		mergeNew.put("Jenny", "Bus Tour");
+		mergeNew.put("Tom", "Tram");
+		
+		BiFunction<String, String, String> mergerNew = (v1, v2) -> v1.length() > v2.length() ? v1 : v2;
+		mergeNew.merge(null, "New Bus Tour", mergerNew); 
+		mergeNew.forEach((k, v) -> System.out.println(k + " : " + v)); // [null : "New Bus Tour", "Jenny" : "New Bus Tour", "Tom", "Tram"]
+		
+		Map<String, String> mergeNull = new HashMap<>();
+		mergeNull.put("Jenny", "Bus Tour");
+		mergeNull.put("Tom", "Tram");
+		
+		BiFunction<String, String, String> mergerNull = (v1, v2) -> null;
+		mergeNull.merge("Jenny", "New Bus Tour", mergerNull); 
+		mergeNull.forEach((k, v) -> System.out.println(k + " : " + v)); // ["Tom", "Tram"]
+		
+		
+		
 	}
 
 }
