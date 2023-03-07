@@ -3,6 +3,8 @@ package collections;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class CompareDuck implements Comparable<CompareDuck>{
 	
@@ -69,7 +71,13 @@ public class CompareDuck implements Comparable<CompareDuck>{
 		Collections.sort(ducks, byWeight);
 		System.out.println(ducks); // [Quack, Puddles]
 
-
+		System.out.println(Collections.binarySearch(ducks, new CompareDuck("Quack", 7)));
+		
+		Set<Rabbit> rabbits = new TreeSet<>();
+		rabbits.add(new Rabbit());  // class cast exception as the class Rabbit doesn't have Comparable interface implemented
+		
 	}
+	
+	static class Rabbit {int id;};
 
 }
