@@ -92,6 +92,37 @@ public class BuiltInInterfaces {
 		BinaryOperator<String> b2 = (str1, str2) -> str1.concat(str2);
 		System.out.println(b1.apply("Test", "es")); // Testes
 		System.out.println(b2.apply("function", "ab")); // functionab
+		
+		/*
+		 * Default methods in functional interfaces
+		 * 
+		 */
+			/*
+			 * Predicate Interface
+			 */
+			Predicate<String> egg = s -> s.contains("egg");
+			Predicate<String> brown = s -> s.contains("brown");
+			
+			Predicate<String> brownEggs = s -> s.contains("egg") && s.contains("brown");
+			Predicate<String> otherEggs = s -> s.contains("egg") && !s.contains("brown");
+			
+			brownEggs = egg.and(brown);
+			otherEggs = egg.and(brown.negate());
+			
+			System.out.println(brownEggs.test("egg - brown")); // true
+			System.out.println(brownEggs.test("egg - white")); // false
+		
+		/*
+		 * Consumer Interface
+		 */
+		Consumer<String> c11 = x -> System.out.println("1: " + x);
+		Consumer<String> c12 = x -> System.out.println("2: " + x);
+		
+		Consumer<String> combined = c11.andThen(c12);
+		combined.accept("Annie"); // 1: Annie  2: Annie
+		// Same input is being passed for both the consumer interfaces
+		
+		
 	}
 	
 
