@@ -1,8 +1,0 @@
-	- Liskov Substitution Principle(LSP)
-		- 'Is-A' Relationship alone not enough
-		- 		- Objects should be replaceable with their subtypes without affecting the correctness of the program
-	Solutions: 
-		- Break Hierarchy
-		- Tell, Don't Ask
-			- Implemented in this example as there was no need to use instanceof
-			operator 
