@@ -2,6 +2,7 @@ package functional_programming;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class StreamFunctionality {
@@ -52,6 +53,19 @@ public class StreamFunctionality {
 		
 		Stream<String> sFindFirst = Stream.of("gorilla", "bonobo", "monkey");
 		sFindFirst.findAny().ifPresent(System.out::println); // gorilla
+		
+		Stream<String> infiniteStream = Stream.generate(() -> "chimp");
+		infiniteStream.findAny().ifPresent(System.out::println); // chimp
+		
+		//allMatch, anyMatch and noneMatch
+		var listMatch = List.of("monkey", "2", "chimp");
+		Stream<String> infiniteMatch = Stream.generate(() -> "chimp");
+		Predicate<String> pred = x -> Character.isLetter(x.charAt(0));
+		
+		System.out.println(listMatch.stream().allMatch(pred)); // false
+		System.out.println(listMatch.stream().anyMatch(pred)); // true
+		System.out.println(listMatch.stream().noneMatch(pred)); // false
+		System.out.println(infiniteMatch.anyMatch(pred)); // true
 	}
 
 }
