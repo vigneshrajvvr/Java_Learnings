@@ -46,6 +46,12 @@ public class StreamFunctionality {
 		Optional<?> minEmpty = Stream.empty().min((s1, s2) -> 0);
 		System.out.println(minEmpty.isPresent()); // false
 		
+		// findany and findFirst
+		Stream<String> sFindAny = Stream.of("monkey", "gorilla", "bonobo");
+		sFindAny.findAny().ifPresent(System.out::println); // monkey
+		
+		Stream<String> sFindFirst = Stream.of("gorilla", "bonobo", "monkey");
+		sFindFirst.findAny().ifPresent(System.out::println); // gorilla
 	}
 
 }
