@@ -2,7 +2,9 @@ package functional_programming;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.TreeSet;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamFunctionality {
@@ -57,7 +59,7 @@ public class StreamFunctionality {
 		Stream<String> infiniteStream = Stream.generate(() -> "chimp");
 		infiniteStream.findAny().ifPresent(System.out::println); // chimp
 		
-		//allMatch, anyMatch and noneMatch
+		// allMatch, anyMatch and noneMatch
 		var listMatch = List.of("monkey", "2", "chimp");
 		Stream<String> infiniteMatch = Stream.generate(() -> "chimp");
 		Predicate<String> pred = x -> Character.isLetter(x.charAt(0));
@@ -66,6 +68,46 @@ public class StreamFunctionality {
 		System.out.println(listMatch.stream().anyMatch(pred)); // true
 		System.out.println(listMatch.stream().noneMatch(pred)); // false
 		System.out.println(infiniteMatch.anyMatch(pred)); // true
+		
+		// forEach
+		Stream<String> sforEach = Stream.of("monkey", "gorilla", "bonobo");
+		sforEach.forEach(System.out::print); // monkeygorillabonobo
+		
+		// reduce
+		System.out.println();
+		var array = new String[] {"w", "o", "l", "f"};
+		var result = "";
+		for(var sarray : array) {
+			result += sarray;
+		}
+		System.out.println(result); // wolf
+		
+		Stream<String> stream = Stream.of("w", "o", "l", "f");
+		String word = stream.reduce("", (a, u) -> a + u);
+		System.out.println(word); // wolf
+		Stream<String> emptyReduce = Stream.empty();
+		System.out.println(emptyReduce.reduce("default", (a, u) -> "")); // default
+		
+		Stream<String> streamReduceOptional = Stream.of("w", "o", "l", "f");
+		Optional<String> wordReduceOptional = streamReduceOptional.reduce((a, u) -> a + u);
+		System.out.println(wordReduceOptional.get());
+		
+		Stream<String> streamReduceCollector = Stream.of("w", "o", "l", "f");
+		int wordStreamCollector = streamReduceCollector.reduce(0, (i, v) -> i + v.length(), (a, u) -> a + u);
+		System.out.println(wordStreamCollector); // 4
+		
+		// collect
+		Stream<String> streamCollect = Stream.of("w", "o", "l", "f");
+		StringBuilder wordCollect = streamCollect.collect(StringBuilder::new, StringBuilder::append, StringBuilder::append);
+		System.out.println(wordCollect); // wolf
+		
+		Stream<String> streamCollect1 = Stream.of("w", "o", "l", "f");
+		TreeSet<String> wordCollectTreeSet = streamCollect1.collect(TreeSet::new, TreeSet::add, TreeSet::addAll);
+		System.out.println(wordCollectTreeSet); // [f, l, o, w]
+		
+		Stream<String> streamCollector = Stream.of("w", "o", "l", "f");
+		TreeSet<String> wordCollectorTreeSet = streamCollector.collect(Collectors.toCollection(TreeSet::new));
+		System.out.println(wordCollectorTreeSet); // [f, l, o, w]
 	}
 
 }
