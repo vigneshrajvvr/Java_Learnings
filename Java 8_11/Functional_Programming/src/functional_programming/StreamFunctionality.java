@@ -108,6 +108,31 @@ public class StreamFunctionality {
 		Stream<String> streamCollector = Stream.of("w", "o", "l", "f");
 		TreeSet<String> wordCollectorTreeSet = streamCollector.collect(Collectors.toCollection(TreeSet::new));
 		System.out.println(wordCollectorTreeSet); // [f, l, o, w]
+		
+		/*
+		 * Intermediate operations
+		 */
+		
+		// filter
+		System.out.println();
+		System.out.println("Filter Intermediate function : ");
+		Stream<String> sFilter = Stream.of("monkey", "gorilla", "bonobo");
+		sFilter.filter(x -> x.startsWith("m"))
+		.forEach(System.out::println); // monkey
+		
+		// distinct
+		System.out.println();
+		System.out.println("Distinct Intermediate function : ");
+		Stream<String> sDistinct = Stream.of("monkey", "monkey", "bonobo");
+		sDistinct.distinct().forEach(System.out::println); // monkey bonobo
+		
+		// limt and skip
+		System.out.println();
+		System.out.println("Limit and skip Intermediate functions : ");
+		Stream<Integer> sLimitSkip = Stream.iterate(1, i -> i + 1);
+		sLimitSkip.skip(5)
+				  .limit(2)
+				  .forEach(System.out::print); //67
 	}
 
 }
