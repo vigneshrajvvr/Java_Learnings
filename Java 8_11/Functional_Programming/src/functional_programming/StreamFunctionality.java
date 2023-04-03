@@ -1,5 +1,6 @@
 package functional_programming;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.TreeSet;
@@ -144,16 +145,32 @@ public class StreamFunctionality {
 		
 		// flatmap
 		System.out.println();
-		
-		System.out.println("Map Intermediate functions : ");
+		System.out.println("FlatMap Intermediate functions : ");
 		List<String> zeroList = List.of();
 		var one = List.of("Bonobo");
 		var two = List.of("Mama Gorilla", "Baby Gorilla");
 		Stream<List<String>> animals = Stream.of(zeroList, one, two);
-		animals.flatMap(m -> m.stream()).forEach(System.out::print);
+		animals.flatMap(m -> m.stream()).forEach(System.out::print); // BonoboMama GorillaBaby Gorilla
 		System.out.println();
 		
+		// sorted
+		System.out.println();
+		System.out.println("Sorted Intermediate functions : ");
+		Stream<String> sSorted = Stream.of("brow-", "bear-");
+		sSorted.sorted().forEach(System.out::print); // bear-brow-
 		
+		Stream<String> sSortedCompartor = Stream.of("brow-", "bear-");
+		sSortedCompartor.sorted(Comparator.reverseOrder()).forEach(System.out::print); // brow-bear-		
+		System.out.println();
+		
+		// peek
+		System.out.println();
+		System.out.println("Sorted Intermediate functions : ");
+		Stream<String> sPeek = Stream.of("black bear", "brown bear", "grizzly");
+		long count = sPeek.filter(sPeeks -> sPeeks.startsWith("g")).peek(System.out::print).count();
+		System.out.println(count); // grizzly1
+		System.out.println();
+
 	}
 
 }
