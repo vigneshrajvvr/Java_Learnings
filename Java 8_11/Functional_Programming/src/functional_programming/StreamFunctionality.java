@@ -133,6 +133,27 @@ public class StreamFunctionality {
 		sLimitSkip.skip(5)
 				  .limit(2)
 				  .forEach(System.out::print); //67
+		System.out.println();
+		
+		// map
+		System.out.println();
+		System.out.println("Map Intermediate functions : ");
+		Stream<String> sMap = Stream.of("monkey", "gorilla", "bonobo");
+		sMap.map(String::length).forEach(System.out::print); // 676
+		System.out.println();
+		
+		// flatmap
+		System.out.println();
+		
+		System.out.println("Map Intermediate functions : ");
+		List<String> zeroList = List.of();
+		var one = List.of("Bonobo");
+		var two = List.of("Mama Gorilla", "Baby Gorilla");
+		Stream<List<String>> animals = Stream.of(zeroList, one, two);
+		animals.flatMap(m -> m.stream()).forEach(System.out::print);
+		System.out.println();
+		
+		
 	}
 
 }
