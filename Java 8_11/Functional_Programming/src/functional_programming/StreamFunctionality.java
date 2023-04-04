@@ -1,5 +1,7 @@
 package functional_programming;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -170,7 +172,32 @@ public class StreamFunctionality {
 		long count = sPeek.filter(sPeeks -> sPeeks.startsWith("g")).peek(System.out::print).count();
 		System.out.println(count); // grizzly1
 		System.out.println();
-
+		
+		// chaining of operations/pipeline
+		// To get first two names from list of strings that are four characters long
+		System.out.println();
+		System.out.println("To get first two names from list of strings that are four characters long - Normal Way");
+		var listNames = List.of("Toby", "Anna", "Leroy", "Alex");
+		List<String> filteredStrings = new ArrayList<>();
+		for(String listName : listNames) {
+			if(listName.length() == 4) filteredStrings.add(listName);
+		}
+		Collections.sort(filteredStrings);
+		var iter = filteredStrings.iterator();
+		if(iter.hasNext()) System.out.println(iter.next()); // Alex
+		if(iter.hasNext()) System.out.println(iter.next()); // Anna
+		System.out.println();
+		
+		System.out.println();
+		System.out.println("To get first two names from list of strings that are four characters long - Streams way");
+		var listFilteredStream = List .of("Toby", "Anna", "Leroy", "Alex");
+		listFilteredStream.stream().filter(x -> x.length() == 4)
+						  .sorted()
+						  .limit(2)
+						  .forEach(System.out::print); // AlexAnna
+		System.out.println();		
+		
+		
 	}
 
 }
