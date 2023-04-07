@@ -1,6 +1,7 @@
 package functional_programming;
 
 import java.util.ArrayList;
+import java.util.OptionalDouble;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
@@ -57,10 +58,28 @@ public class PrimitiveStreams {
 		// flatmaps
 		var integerList = new ArrayList<Integer>();
 		IntStream ints = integerList.stream().flatMapToInt(x -> IntStream.of(x));
-		
 		DoubleStream doubles = integerList.stream().flatMapToDouble(x -> DoubleStream.of(x));
-		
 		LongStream longs = integerList.stream().flatMapToLong(x -> LongStream.of(x));
+		
+		/*
+		 * Optional with primitives
+		 */
+		System.out.println("OptionalInt OptionalDouble OptionalLong");
+		var stream = IntStream.rangeClosed(1, 10);
+		OptionalDouble optional = stream.average();
+		optional.ifPresent(System.out::println); // 5.5
+		System.out.println(optional.getAsDouble()); // 5.5
+		System.out.println(optional.orElseGet(() -> Double.NaN)); // 5.5
+		
+		LongStream longsStream = LongStream.of(5, 10);
+		long longSum = longsStream.sum();
+		System.out.println(longSum); // 15
+		DoubleStream doublesStream = DoubleStream.generate(() -> Math.PI);
+		// OptionalDouble min = doublesStream.min(); // infinite streams
+		
+				
+		System.out.println();		
+		
 	}
 	
 	public static Stream<Integer> mapping(IntStream stream) {
