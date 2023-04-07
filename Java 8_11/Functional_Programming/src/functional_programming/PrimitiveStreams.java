@@ -1,5 +1,6 @@
 package functional_programming;
 
+import java.util.ArrayList;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
@@ -52,6 +53,25 @@ public class PrimitiveStreams {
 		IntStream intStreamMap = objStream.mapToInt(s -> s.length());
 		intStreamMap.forEach(System.out::println); // 7 4
 		System.out.println();
+		
+		// flatmaps
+		var integerList = new ArrayList<Integer>();
+		IntStream ints = integerList.stream().flatMapToInt(x -> IntStream.of(x));
+		
+		DoubleStream doubles = integerList.stream().flatMapToDouble(x -> DoubleStream.of(x));
+		
+		LongStream longs = integerList.stream().flatMapToLong(x -> LongStream.of(x));
+	}
+	
+	public static Stream<Integer> mapping(IntStream stream) {
+		
+		return stream.mapToObj(x -> x);
+		
+	}
+	
+	public static Stream<Integer> boxing(IntStream stream) {
+		
+		return stream.boxed();
 		
 	}
 
