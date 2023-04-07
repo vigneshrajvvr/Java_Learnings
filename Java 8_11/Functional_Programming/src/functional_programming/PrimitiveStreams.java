@@ -1,6 +1,7 @@
 package functional_programming;
 
 import java.util.ArrayList;
+import java.util.IntSummaryStatistics;
 import java.util.OptionalDouble;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
@@ -75,10 +76,17 @@ public class PrimitiveStreams {
 		long longSum = longsStream.sum();
 		System.out.println(longSum); // 15
 		DoubleStream doublesStream = DoubleStream.generate(() -> Math.PI);
-		// OptionalDouble min = doublesStream.min(); // infinite streams
-		
-				
+		// OptionalDouble min = doublesStream.min(); // infinite streams				
 		System.out.println();		
+		
+		// Summary Statistics
+		System.out.println("Summary Statistics");		
+		var streamStats = IntStream.rangeClosed(1, 10);
+		IntSummaryStatistics stats = streamStats.summaryStatistics();
+		if(stats.getCount() == 0) throw new RuntimeException();
+		System.out.println(stats.getMax() - stats.getMin()); // 9
+		System.out.println();
+		
 		
 	}
 	
