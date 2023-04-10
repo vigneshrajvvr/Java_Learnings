@@ -3,6 +3,7 @@ package functional_programming;
 import java.util.ArrayList;
 import java.util.IntSummaryStatistics;
 import java.util.OptionalDouble;
+import java.util.function.BooleanSupplier;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
@@ -87,6 +88,15 @@ public class PrimitiveStreams {
 		System.out.println(stats.getMax() - stats.getMin()); // 9
 		System.out.println();
 		
+		/*
+		 * Functional Interfaces for primitives
+		 */
+		System.out.println("BooleanSupplier: ");		
+		BooleanSupplier b1 = () -> true;
+		BooleanSupplier b2 = () -> Math.random() > 0.5;
+		System.out.println(b1.getAsBoolean()); // true
+		System.out.println(b2.getAsBoolean()); // true or false depending the random value
+		System.out.println();
 		
 	}
 	
