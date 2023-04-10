@@ -2,6 +2,7 @@ package functional_programming;
 
 import java.util.ArrayList;
 import java.util.IntSummaryStatistics;
+import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.function.BooleanSupplier;
 import java.util.stream.DoubleStream;
@@ -98,7 +99,29 @@ public class PrimitiveStreams {
 		System.out.println(b2.getAsBoolean()); // true or false depending the random value
 		System.out.println();
 		
+		System.out.println("Streams methods for Optional : ");		
+		Optional<Integer> result = Optional.of("OptionalString").map(String::length);
+		System.out.println();
+		
 	}
+	
+	private static void threeDigit(Optional<Integer> optional) {
+		if(optional.isPresent()) {
+			var num = optional.get();
+			var string = "" + num;
+			if(string.length() == 3) {
+				System.out.println(string);
+			}
+		}
+	}
+	
+	private static void threeDigitOptional(Optional<Integer> optional) {
+		optional.map(x -> "" + x)
+				.filter(x -> x.length() == 3)
+				.ifPresent(System.out::println);
+	}
+	
+	
 	
 	public static Stream<Integer> mapping(IntStream stream) {
 		
