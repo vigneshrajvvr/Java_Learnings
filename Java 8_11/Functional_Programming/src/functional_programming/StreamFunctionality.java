@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -197,6 +200,93 @@ public class StreamFunctionality {
 						  .forEach(System.out::print); // AlexAnna
 		System.out.println();		
 		
+		// Collectors
+		System.out.println();	
+		System.out.println("Collectors - joining");		
+		var ohMy = Stream.of("lions", "tigers", "bears");
+		String resultCollectors = ohMy.collect(Collectors.joining(","));
+		System.out.println(resultCollectors); // lions,tigers,bears
+		System.out.println();		
+
+		System.out.println("Collectors - averagningInt");		
+		var ohMyAveragingInt = Stream.of("lions", "tigers", "bears");
+		Double averagingIntResult = ohMyAveragingInt.collect(Collectors.averagingInt(String::length));
+		System.out.println(averagingIntResult); // 5.333333333333333
+		System.out.println();
+		
+		System.out.println("Collectors - toCollection");		
+		var ohMyToCollection = Stream.of("lions", "tigers", "bears");
+		TreeSet<String> ohMyResult = ohMyToCollection.filter(x -> x.startsWith("t"))
+													 .collect(Collectors.toCollection(TreeSet::new));
+		System.out.println(ohMyResult); // [tigers]
+		System.out.println();
+		
+		System.out.println("Collectors - toMaps");		
+		var ohMyToMaps = Stream.of("lions", "tigers", "bears");
+		Map<String, Integer> ohMymapResult = ohMyToMaps.collect(Collectors.toMap(sm -> sm, String::length));
+		System.out.println(ohMymapResult); // {lions=5, bears=5, tigers=6}
+		System.out.println();
+		
+		var ohMyToMaps1 = Stream.of("lions", "tigers", "bears");
+		Map<Integer, String> ohMyMapResult1 = ohMyToMaps1.collect(Collectors.toMap(String::length, k -> k, (s1,s2) -> s1 + "," + s2));
+		System.out.println(ohMyMapResult1); // {5=lions,bears, 6=tigers}
+		System.out.println(ohMyMapResult1.getClass()); // class java.util.HashMap - but not guaranteed
+		
+		System.out.println();
+		var ohMyToMaps2 = Stream.of("lions", "tigers", "bears");
+		Map<Integer, String> ohMyMapResult2 = ohMyToMaps2.collect(Collectors.toMap(String::length, k -> k, (s1,s2) -> s1 + "," + s2, TreeMap::new));
+		System.out.println(ohMyMapResult2); // {5=lions,bears, 6=tigers}
+		System.out.println(ohMyMapResult2.getClass()); // class java.util.TreeMap - but not guaranteed
+		System.out.println();
+		
+		System.out.println("Collectors - groupingBy");
+		var ohMyGroupingBy1 = Stream.of("lions", "tigers", "bears");
+		Map<Integer, List<String>> ohMyGroupingByResult1 = ohMyGroupingBy1.collect(Collectors.groupingBy(String::length));
+		System.out.println(ohMyGroupingByResult1); // {5=[lions, bears], 6=[tigers]}
+		
+		var ohMyGroupingBy2 = Stream.of("lions", "tigers", "bears");
+		Map<Integer, Set<String>> ohMyGroupingByResult2 = ohMyGroupingBy2.collect(Collectors.groupingBy(String::length, Collectors.toSet()));
+		System.out.println(ohMyGroupingByResult2); // {5=[lions, bears], 6=[tigers]}
+		
+
+		var ohMyGroupingBy3 = Stream.of("lions", "tigers", "bears");
+		TreeMap<Integer, Set<String>> ohMyGroupingByResult3 = ohMyGroupingBy3.collect(Collectors.groupingBy(String::length, TreeMap::new, Collectors.toSet()));
+		System.out.println(ohMyGroupingByResult3); // {5=[lions, bears], 6=[tigers]}
+		
+		var ohMyGroupingBy4 = Stream.of("lions", "tigers", "bears");
+		TreeMap<Integer, List<String>> ohMyGroupingByResult4 = ohMyGroupingBy4.collect(Collectors.groupingBy(String::length, TreeMap::new, Collectors.toList()));
+		System.out.println(ohMyGroupingByResult4); // {5=[lions, bears], 6=[tigers]}
+		System.out.println();
+		
+		System.out.println();
+		System.out.println("Collectors - partitionBy");
+		var ohMyPartitionBy1 = Stream.of("lions", "tigers", "bears");
+		Map<Boolean, List<String>> ohMyPartitionByResult1 = ohMyPartitionBy1.collect(Collectors.partitioningBy(sp -> sp.length() <= 5));
+		System.out.println(ohMyPartitionByResult1); // {false=[tigers], true=[lions, bears]}
+		
+		var ohMyPartitionBy2 = Stream.of("lions", "tigers", "bears");
+		Map<Boolean, Set<String>> ohMyPartitionByResult2 = ohMyPartitionBy2.collect(Collectors.partitioningBy(sp -> sp.length() <= 5, Collectors.toSet()));
+		System.out.println(ohMyPartitionByResult2); // {false=[tigers], true=[lions, bears]}
+
+		var ohMyPartitionBy3 = Stream.of("lions", "tigers", "bears");
+		Map<Boolean, Long> ohMyPartitionByResult3 = ohMyPartitionBy3.collect(Collectors.partitioningBy(sp -> sp.length() <= 5, Collectors.counting()));
+		System.out.println(ohMyPartitionByResult3); // {false=1, true=2}
+		System.out.println();
+		
+		System.out.println();
+		System.out.println("Collectors - Mapping");
+		var ohMyMapping1 = Stream.of("lions", "tigers", "bears");
+		Map<Integer, Optional<Character>> ohMyMappingResult1 = ohMyMapping1.collect(
+												Collectors.groupingBy(
+														String::length, 
+														Collectors.mapping(
+																sc -> sc.charAt(0), 
+																Collectors.minBy((a, b) -> a - b)
+																)
+														)
+												);
+		System.out.println(ohMyMappingResult1); // {5=Optional[b], 6=Optional[t]}
+		System.out.println();
 		
 	}
 
