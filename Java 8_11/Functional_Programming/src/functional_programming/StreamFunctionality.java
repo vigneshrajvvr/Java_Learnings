@@ -31,6 +31,15 @@ public class StreamFunctionality {
 		
 		Stream<Double> randoms = Stream.generate(Math::random);
 		Stream<Integer> oddNumbers = Stream.iterate(1, n -> n + 2);
+		Stream<String> iterateTest = Stream.iterate("-", s -> s.length() < 3, s -> s + s);
+		System.out.println("Iterate with 3 parameters :");
+		iterateTest.forEach(System.out::print);
+		System.out.println(Stream.iterate(1, x -> x++)
+			  .limit(5)
+			  .map(x -> "" + x)
+			  .collect(Collectors.joining())
+			  );
+		
 		
 		/*
 		 * Terminal Operations
