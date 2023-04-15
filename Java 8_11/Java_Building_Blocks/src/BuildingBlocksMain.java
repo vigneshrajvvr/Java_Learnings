@@ -16,9 +16,9 @@ public class BuildingBlocksMain {
 		System.out.println(chick.name);
 		
 		// Order of output - Instance initializers - Constructor - Main method
-		// Setting field
-		// setting constructor
-		// Tiny
+		// - Setting field
+		// - setting constructor
+		// - Tiny
 
 	}
 
