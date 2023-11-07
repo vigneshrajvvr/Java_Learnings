@@ -8,6 +8,7 @@ Topic 1: Final modifier used with classes.
 // The following class is a class with no modifiers which means we can
 // use it to subclass, and we can override methods except final methods
 class ExtendMeOptional {
+//    private ExtendMeOptional(){}
     // This method is valid for overriding
     public void doSomething() {
         System.out.println("Overriding ExtendMeOptional.doSomething " +
@@ -55,10 +56,22 @@ public class FirstFinalTest {
         objectB.doSomethingFinally();
 
         // Create an instance of our extended class
-        // and execute it's methods
+        // and execute its methods
         MyFirstExtendedClass objectC = new MyFirstExtendedClass();
         objectC.doSomething();
         objectC.doSomethingFinally();
+
+        // Create an instance of our abstract class
+        // and execute it's methods
+        // ExtendMeRequired objectD = new ExtendMeRequired();
+        // objectD.doSomething();
+        // objectD.doSomethingFinally();
+
+        // Create an instance of our class which extends the abstract class
+        // and execute its methods
+        MySecondExtendedClass objectD = new MySecondExtendedClass();
+        objectD.doSomething();
+        objectD.doSomethingFinally();
     }
 }
 
@@ -76,4 +89,25 @@ class MyFirstExtendedClass extends ExtendMeOptional {
 //    public final void doSomethingFinally() {
 //        System.out.println("I would very much like to customize this method");
 //    }
+}
+
+// The following class is an abstract class which means we MUST subclass it.
+// It is incomplete in its current form and cannot be instantiated.
+abstract class ExtendMeRequired {
+    public abstract void doSomething();
+
+    // A final method in a non-final class cannot be overridden by a
+    // subclass
+    public final void doSomethingFinally() {
+        System.out.println("Overriding ExtendMeRequired.doSomethingFinally " + "is not optional");
+    }
+}
+
+final class MySecondExtendedClass extends ExtendMeRequired {
+
+    // an overridden method can be modified with the final modifier and
+    // still considered a valid override.
+    public final void doSomething() {
+        System.out.println("Implementation of this method was required");
+    }
 }
