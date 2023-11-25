@@ -10,6 +10,9 @@ package inner;
 // Enclosing Class
 public class EnclosingClass {
 
+    // instance field of the type of the inner class
+    public InnerMemberClass innerMemberClass = new InnerMemberClass();
+
     // Add Constructor
     EnclosingClass(String name) {
         this.outerName = name;
@@ -37,8 +40,22 @@ public class EnclosingClass {
         }
 
         public String getOuterName() {
-            return "InnerMemberClass.getOuterName() = " + outerName;
+            return "InnerMemberClass.getOuterName() = " +
+                    EnclosingClass.this.outerName;
         }
+
+        // static field
+        public final static String staticName = "staticName";
+
+//        public enum Colors {
+//            RED, BLUE, YELLOW
+//        }
+//
+//        public interface NestedInterface {
+//
+//        }
+
+        public String outerName = "outer";
 
     }  // Ends declaration of the inner member class
 
@@ -74,6 +91,11 @@ class TestEnclosingClass {
         // new instance in a single statement
         EnclosingClass.InnerMemberClass j = f.new InnerMemberClass();
         System.out.println("Invoking j.getOuterName: " + j.getOuterName());
+
+        e.innerMemberClass.instanceName = "Testing";
+        System.out.println(e.innerMemberClass.getInstanceName());
+
+
 
     }
 }
