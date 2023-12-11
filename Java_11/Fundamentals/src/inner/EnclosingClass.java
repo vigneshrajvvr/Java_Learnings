@@ -40,7 +40,11 @@ public class EnclosingClass {
         }
 
         public String getOuterName() {
-            return "InnerMemberClass.getOuterName() = " +
+            // Local variable shadows inner class member which in turn
+            // shadows outer class's member.  Here we access all 3
+            String outerName = "local_outerName";
+            return outerName + " : " +
+                    this.outerName + " : " +
                     EnclosingClass.this.outerName;
         }
 
