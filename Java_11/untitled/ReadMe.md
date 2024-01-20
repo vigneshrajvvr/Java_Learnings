@@ -1,1 +1,0 @@
-[Reference blog post](https://medium.com/android-news/solid-principles-the-definitive-guide-75e30a284dea)
