@@ -1,4 +1,4 @@
-package strategyPattern;
+package behavioralPattern.strategyPattern;
 
 public class Client {
 
