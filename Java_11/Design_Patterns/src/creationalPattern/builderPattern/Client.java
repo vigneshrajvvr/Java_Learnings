@@ -12,8 +12,7 @@ public class Client {
         Car newCar = Car.getBuilder()
                 .setColor("Blue")
                 .setType("Automatic")
-                .build(); 
-
+                .build();
     }
 
 }
