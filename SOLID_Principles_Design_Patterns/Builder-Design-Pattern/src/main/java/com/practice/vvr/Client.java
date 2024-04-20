@@ -25,4 +25,13 @@ public class Client {
 		user.setAddress(address);
 		return user;
 	}
+
+	public static Student getStudent() {
+		Student s = Student.getBuilder()
+				.setId(1)
+				.setAge(27)
+				.build();
+
+		return s;
+	}
 }
