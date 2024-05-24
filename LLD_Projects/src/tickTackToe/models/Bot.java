@@ -1,7 +1,7 @@
-package ticktacktoe.models;
+package tickTackToe.models;
 
-import ticktacktoe.strategies.BotPlayingStrategy;
-import ticktacktoe.strategies.BotPlayingStrategyFactory;
+import tickTackToe.strategies.BotPlayingStrategy;
+import tickTackToe.strategies.BotPlayingStrategyFactory;
 
 public class Bot extends Player{
     private BotDifficultyLevel botDifficultyLevel;

@@ -1,6 +1,6 @@
-package ticktacktoe.strategies;
+package tickTackToe.strategies;
 
-import ticktacktoe.models.BotDifficultyLevel;
+import tickTackToe.models.BotDifficultyLevel;
 
 public class BotPlayingStrategyFactory {
     public static BotPlayingStrategy getBotPlayingStrategyByDifficultyLevel(BotDifficultyLevel botDifficultyLevel) {

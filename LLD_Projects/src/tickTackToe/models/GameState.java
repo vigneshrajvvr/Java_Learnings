@@ -1,4 +1,4 @@
-package ticktacktoe.models;
+package tickTackToe.models;
 
 public enum GameState {
     IN_PROGRESS,

@@ -1,7 +1,7 @@
-package ticktacktoe.strategies;
+package tickTackToe.strategies;
 
-import ticktacktoe.models.Board;
-import ticktacktoe.models.Player;
+import tickTackToe.models.Board;
+import tickTackToe.models.Player;
 
 public interface WinningStrategy {
     public boolean checkWinner(Player player, Board board);

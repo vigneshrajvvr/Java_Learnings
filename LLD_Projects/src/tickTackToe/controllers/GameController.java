@@ -1,9 +1,9 @@
-package ticktacktoe.controllers;
+package tickTackToe.controllers;
 
-import ticktacktoe.models.Game;
-import ticktacktoe.models.GameState;
-import ticktacktoe.models.Player;
-import ticktacktoe.strategies.WinningStrategy;
+import tickTackToe.models.Game;
+import tickTackToe.models.GameState;
+import tickTackToe.models.Player;
+import tickTackToe.strategies.WinningStrategy;
 
 import java.util.List;
 

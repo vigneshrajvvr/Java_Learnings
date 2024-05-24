@@ -1,8 +1,8 @@
-package ticktacktoe;
+package tickTackToe;
 
-import ticktacktoe.controllers.GameController;
-import ticktacktoe.models.Game;
-import ticktacktoe.models.GameState;
+import tickTackToe.controllers.GameController;
+import tickTackToe.models.Game;
+import tickTackToe.models.GameState;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package ticktacktoe.models;
+package tickTackToe.models;
 
 public class Move {
     private Cell cell;

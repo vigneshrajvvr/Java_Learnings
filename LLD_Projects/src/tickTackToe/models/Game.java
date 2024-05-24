@@ -1,8 +1,7 @@
-package ticktacktoe.models;
+package tickTackToe.models;
 
-import ticktacktoe.strategies.WinningStrategy;
+import tickTackToe.strategies.WinningStrategy;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

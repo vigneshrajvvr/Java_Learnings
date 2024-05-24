@@ -1,4 +1,4 @@
-package ticktacktoe.strategies;
+package tickTackToe.strategies;
 
 public interface BotPlayingStrategy {
 }
