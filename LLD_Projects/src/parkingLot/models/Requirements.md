@@ -9,7 +9,7 @@
 
 ### Low Level
 - Multiple levels/floors
-- Different entry/exit gates
+- Different entry/exit gates for the parking lot
 - Different parking slots on floors - For different type of vehicles
 - A ticket/token is generated at the entry point
 - Slot is assigned at the time of entry 
