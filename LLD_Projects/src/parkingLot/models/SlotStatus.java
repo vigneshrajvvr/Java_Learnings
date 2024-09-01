@@ -1,5 +1,5 @@
 package parkingLot.models;
 
-public enum ParkingStatus {
+public enum SlotStatus {
     FILLED, AVAILABLE, BLOCKED
 }
