@@ -1,9 +1,11 @@
 package parkingLot.models;
 
-public class Payment {
-    private String mode;
+import java.util.Date;
+
+public class Payment extends BaseModel {
+    private PaymentMode mode;
     private Double amount;
-    private String time;
+    private Date paymentDate;
     private PaymentStatus paymentStatus;
-    private Integer refNumber;
+    private int refNumber;
 }

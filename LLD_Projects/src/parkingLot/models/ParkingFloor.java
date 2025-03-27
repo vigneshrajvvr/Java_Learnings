@@ -2,11 +2,10 @@ package parkingLot.models;
 
 import java.util.List;
 
-public class ParkingFloor {
-    private Integer id;
-    private Integer floorNubmer;
+public class ParkingFloor extends BaseModel {
+    private String floorNumber;
     private List<ParkingSlot> parkingSlots;
     private List<Vehicle> allowedVehicles;
-    private FloorStatus status;
+    private FloorStatus floorStatus;
 
 }

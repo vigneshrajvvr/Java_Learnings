@@ -1,5 +1,5 @@
 package parkingLot.models;
 
 public enum GateStatus {
-    OPEN, CLOSED
+    OPEN, CLOSED, UNDER_MAINTENANCE
 }
