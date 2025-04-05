@@ -7,7 +7,7 @@ public class Token extends BaseModel {
     private Integer tokenNumber;
     private Date entryTime;
     private Operator operatedBy;
-    private Gate gate;
+    private Gate generatedAt;
     private ParkingSlot parkingSlot;
     private Vehicle vehicle;
 
@@ -35,12 +35,12 @@ public class Token extends BaseModel {
         this.operatedBy = operatedBy;
     }
 
-    public Gate getGate() {
-        return gate;
+    public Gate getGeneratedAt() {
+        return generatedAt;
     }
 
-    public void setGate(Gate gate) {
-        this.gate = gate;
+    public void setGeneratedAt(Gate generatedAt) {
+        this.generatedAt = generatedAt;
     }
 
     public ParkingSlot getParkingSlot() {
