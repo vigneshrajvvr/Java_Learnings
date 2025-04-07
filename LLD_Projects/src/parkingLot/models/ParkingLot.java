@@ -8,6 +8,19 @@ public class ParkingLot extends BaseModel{
     private List<Gate> gates;
     private ParkingLotStatus parkingLotStatus;
     private List<VehicleType> listOfVehicleTypes;
+    private SlotAssignmentStrategyType slotAssignmentStrategyType;
+
+    public ParkingLot(SlotAssignmentStrategyType slotAssignmentStrategyType) {
+        this.slotAssignmentStrategyType = slotAssignmentStrategyType;
+    }
+
+    public SlotAssignmentStrategyType getSlotAssignmentStrategyType() {
+        return slotAssignmentStrategyType;
+    }
+
+    public void setSlotAssignmentStrategyType(SlotAssignmentStrategyType slotAssignmentStrategyType) {
+        this.slotAssignmentStrategyType = slotAssignmentStrategyType;
+    }
 
     public Integer getCapacity() {
         return capacity;

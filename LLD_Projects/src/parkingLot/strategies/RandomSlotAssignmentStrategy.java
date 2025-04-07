@@ -10,13 +10,12 @@ public class RandomSlotAssignmentStrategy implements SlotAssignmentStrategy{
         this.parkingLotRepository = parkingLotRepository;
     }
     @Override
-    public ParkingLot getSlot(Gate gate, VehicleType vehicleType) {
-        ParkingLot parkingLot = parkingLotRepository.findParkingLotByGate(gate);
+    public ParkingSlot getSlot(ParkingLot parkingLot, VehicleType vehicleType) {
 
         for(ParkingFloor parkingFloor : parkingLot.getParkingFloors()) {
             for(ParkingSlot parkingSlot : parkingFloor.getParkingSlots()) {
                 if(parkingSlot.getSupportedVehicleTypes().contains(vehicleType) && parkingSlot.getSlotStatus().equals(SlotStatus.EMPTY)) {
-                    return parkingLot;
+                    return parkingSlot;
                 }
             }
         }

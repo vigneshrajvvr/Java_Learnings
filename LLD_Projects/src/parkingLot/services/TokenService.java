@@ -3,6 +3,7 @@ package parkingLot.services;
 import parkingLot.models.*;
 import parkingLot.repositories.GateRepository;
 import parkingLot.repositories.ParkingLotRepository;
+import parkingLot.repositories.TokenRepository;
 import parkingLot.repositories.VehicleRepository;
 import parkingLot.strategies.SlotAssignmentStrategy;
 import parkingLot.strategies.SlotAssignmentStrategyFactory;
@@ -14,12 +15,14 @@ import java.util.Optional;
 public class TokenService {
     private GateRepository gateRepository;
     private VehicleRepository vehicleRepository;
-    private parkingLot.models.SlotAssignmentStrategyType slotAssignmentStrategyType;
+    private ParkingLotRepository parkingLotRepository;
+    private TokenRepository tokenRepository;
 
-    public TokenService(GateRepository gateRepository, VehicleRepository vehicleRepository, SlotAssignmentStrategyType slotAssignmentStrategyType) {
+    public TokenService(GateRepository gateRepository, VehicleRepository vehicleRepository, ParkingLotRepository parkingLotRepository, TokenRepository tokenRepository) {
         this.gateRepository = gateRepository;
         this.vehicleRepository = vehicleRepository;
-        this.slotAssignmentStrategyType = slotAssignmentStrategyType;
+        this.parkingLotRepository = parkingLotRepository;
+        this.tokenRepository = tokenRepository;
     }
     public Token issueToken(Long gateId, VehicleType vehicleType, String vehicleNumber, String ownerName) {
         // Create a token
@@ -46,9 +49,16 @@ public class TokenService {
         }
         generatedToken.setVehicle(savedVehicle);
         // Assign a slot
-        ParkingLot parkingLot =
-        SlotAssignmentStrategyFactory.getSlotAssignmentStrategyByType(parkingLot)
+        ParkingLot parkingLot = parkingLotRepository.findParkingLotByGate(generatedAt.get());
+        ParkingSlot parkingSlot = SlotAssignmentStrategyFactory
+                .getSlotAssignmentStrategyByType(parkingLot.getSlotAssignmentStrategyType())
+                .getSlot(parkingLot, vehicleType);
+        generatedToken.setParkingSlot(parkingSlot);
+        parkingSlot.setSlotStatus(SlotStatus.FILLED);
+
+        Token savedToken = tokenRepository.save(generatedToken);
+
         // Return
-        return generatedToken;
+        return savedToken;
     }
 }
