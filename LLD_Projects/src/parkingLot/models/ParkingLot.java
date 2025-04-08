@@ -9,9 +9,19 @@ public class ParkingLot extends BaseModel{
     private ParkingLotStatus parkingLotStatus;
     private List<VehicleType> listOfVehicleTypes;
     private SlotAssignmentStrategyType slotAssignmentStrategyType;
+    private AmountGenerationType amountGenerationType;
 
-    public ParkingLot(SlotAssignmentStrategyType slotAssignmentStrategyType) {
+    public ParkingLot(SlotAssignmentStrategyType slotAssignmentStrategyType, AmountGenerationType amountGenerationType) {
         this.slotAssignmentStrategyType = slotAssignmentStrategyType;
+        this.amountGenerationType = amountGenerationType;
+    }
+
+    public AmountGenerationType getAmountGenerationType() {
+        return amountGenerationType;
+    }
+
+    public void setAmountGenerationType(AmountGenerationType amountGenerationType) {
+        this.amountGenerationType = amountGenerationType;
     }
 
     public SlotAssignmentStrategyType getSlotAssignmentStrategyType() {
